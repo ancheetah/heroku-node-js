@@ -20,6 +20,16 @@ app.get('/cool', (req, res) => {
   res.send(cool())
 })
 
+app.get('/times', (req, res) => {
+  const times = process.env.TIMES || 5
+  console.log(`Rendering a count from 1 to ${times} for route '/times'`)
+  let result = ''
+  for (let i = 1; i <= times; i++) {
+    result += i + ' '
+  }
+  res.send(result)
+})
+
 const server = app.listen(port, () => {
   console.log(`Listening on ${port}`)
 })
